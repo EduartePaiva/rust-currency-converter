@@ -4,6 +4,7 @@
 pub struct TemplateApp {
     // Example stuff:
     label: String,
+    my_currency: String,
 
     #[serde(skip)] // This how you opt-out of serialization of a field
     value: f32,
@@ -15,6 +16,7 @@ impl Default for TemplateApp {
             // Example stuff:
             label: "Hello World!".to_owned(),
             value: 2.7,
+            my_currency: "BRL".to_owned(),
         }
     }
 }
@@ -67,10 +69,10 @@ impl eframe::App for TemplateApp {
 
         egui::CentralPanel::default().show(ctx, |ui| {
             // The central panel the region left after adding TopPanel's and SidePanel's
-            ui.heading("eframe template");
+            ui.heading("Currency Converter");
 
             ui.horizontal(|ui| {
-                ui.label("Write something: ");
+                ui.label("Your currency: ");
                 ui.text_edit_singleline(&mut self.label);
             });
 
